@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why VerifiedCall</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f9f9f9;
+        color: #2d2e32;
+      }
+
+      #navbar-placeholder {
+        margin-bottom: 2rem;
+      }
+
+      .section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3rem 2rem;
+        max-width: 1200px;
+        margin: auto;
+        margin-bottom: 2rem;
+      }
+
+      .section-text {
+        flex: 1;
+        padding-right: 2rem;
+      }
+
+      .section-text h1 {
+        font-size: 3.2rem;
+        margin-bottom: 1.5rem;
+        color: #2d2e32;
+      }
+
+      .section-text p {
+        font-size: 1.3rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .store-btn {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        color: #0a0a0a;
+        padding: 10px 18px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+      }
+
+      .store-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+
+      .store-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .section-image {
+        flex: 1;
+        text-align: center;
+      }
+
+      .section-image img {
+        max-width: 100%;
+        border-radius: 16px;
+      }
+
+      .stats {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      .stat {
+        background: white;
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        width: 220px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+        transition: transform 0.3s ease;
+      }
+
+      .stat:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .stat-number {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .features-section {
+        max-width: 1200px;
+        margin: 4rem auto;
+        padding: 2rem;
+      }
+
+      .features-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .features-header h2 {
+        font-size: 2.5rem;
+        color: #007bff;
+      }
+
+      .features-header-line {
+        width: 60px;
+        height: 4px;
+        background-color: #007bff;
+        margin: 1rem auto;
+        border-radius: 2px;
+      }
+
+      .features-header p {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        border-bottom: 5px solid #007bff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 35px rgba(0, 123, 255, 0.2);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #007bff;
+      }
+
+      .feature-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: #2d2e32;
+      }
+
+      .feature-card p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+
+        .section-text {
+          padding-right: 0;
+          margin-top: 2rem;
+        }
+
+        .stats {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      /* testimonials styles */
+      .testimonial-section {
+        background: #f9f6fb;
+        padding: 4rem 1rem;
+        text-align: center;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .testimonial-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: #007bff;
+      }
+
+      .testimonial-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .testimonial-carousel {
+        display: flex;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 1000px;
+        justify-content: center;
+        align-items: stretch; /* Make all cards the same height */
+        transition: all 0.4s ease;
+      }
+
+      .testimonial-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 16px;
+        width: 300px;
+        min-height: 240px; /* Fixed height for visual balance */
+        max-height: 300px; /* Optional: prevent very tall cards */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        opacity: 0.5;
+        transform: scale(0.9);
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden; /* Prevent overflow if too much text */
+        text-align: center;
+      }
+
+      .center-card {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .quote {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      .author {
+        font-weight: bold;
+        color: #007bff;
+      }
+
+      .nav {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #333;
+        margin: 0 1rem;
+      }
+
+      .nav:hover {
+        color: #007bff;
+      }
+      .stars {
+        font-size: 1.2rem;
+        color: #ffd700; /* Gold color */
+        margin-bottom: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="section">
+      <div class="section-text">
+        <h1>Why <span style="color: #007bff">VerifiedCall</span>?</h1>
+        <p>
+          <strong>VerifiedCall</strong> provides assurance and trust in
+          communication. When registered organizations call users with the
+          VerifiedCall app, recipients are instantly notified it's a trusted,
+          verified call — <strong>reducing missed opportunities</strong> and
+          helping <strong>avoid spam</strong>.
+        </p>
+        <div class="cta-buttons">
+          <a class="store-btn" href="#">
+            <img
+              src="Google Play Store Download png.jpg"
+              alt="Download on Google Play"
+            />
+            Google Play
+          </a>
+          <a class="store-btn" href="#">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+              alt="Download on App Store"
+            />
+            App Store
+          </a>
+        </div>
+      </div>
+      <div class="section-image">
+        <img src="whyVerifiedCall.png" alt="VerifiedCall app preview" />
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-icon">📲</div>
+        <div class="stat-number" data-target="500000">0</div>
+        <div class="stat-label">App Downloads</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">🏢</div>
+        <div class="stat-number" data-target="1000">0</div>
+        <div class="stat-label">Verified Organizations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">✅</div>
+        <div class="stat-number" data-target="2000000">0</div>
+        <div class="stat-label">Verified Calls Made</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-number" data-target="30">0</div>
+        <div class="stat-label">Countries Reached</div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section class="features-section">
+      <div class="features-header">
+        <h2>What We Offer</h2>
+        <div class="features-header-line"></div>
+        <p>
+          VerifiedCall helps organizations connect more effectively with their
+          users. Here’s what makes us stand out.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3>Instant Caller Verification</h3>
+          <p>
+            Let users instantly know that your call is from a trusted source.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📢</div>
+          <h3>Brand Recognition</h3>
+          <p>
+            Showcase your verified brand name when you call, building
+            credibility.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Call Analytics</h3>
+          <p>
+            Track call delivery, pickup rates, and user interaction in
+            real-time.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Spam Protection</h3>
+          <p>Ensure your verified calls aren’t mistaken for spam or blocked.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Global Reach</h3>
+          <p>Engage verified users across regions and borders effectively.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3>Easy Integration</h3>
+          <p>
+            Quickly link your systems with our APIs to start verifying calls.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial-section">
+      <h2 class="testimonial-title">What Our Clients Say</h2>
+
+      <div class="testimonial-wrapper">
+        <button class="nav left" onclick="prevTestimonial()">&#10094;</button>
+
+        <div class="testimonial-carousel">
+          <div class="testimonial-card left-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">
+              “The Verified Call app gives me peace of mind. Now I know when a
+              call is legit. It’s become a must-have for my daily
+              communication.”
+            </p>
+            <p class="author">Lucía Gómez – BARCELONA</p>
+          </div>
+
+          <div class="testimonial-card center-card">
+            <div class="stars">★★★★☆</div>
+            <p class="quote">
+              “Super helpful in identifying spam and scam calls. I feel much
+              more secure picking up calls now. Great app, just wish it had dark
+              mode.”
+            </p>
+            <p class="author">Maria Samper – MADRID</p>
+          </div>
+
+          <div class="testimonial-card right-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">
+              “We use Verified Call in our organization to ensure clients trust
+              our calls. It’s increased answer rates and reduced fraud
+              complaints. Highly recommended.”
+            </p>
+            <p class="author">Pedro Santos – GRANADA</p>
+          </div>
+        </div>
+
+        <button class="nav right" onclick="nextTestimonial()">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // Load navbar and footer
+      fetch("navbar.html")
+        .then((res) => res.text())
+        .then(
+          (data) =>
+            (document.getElementById("navbar-placeholder").innerHTML = data)
+        );
+
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then(
+          (data) =>
+            (document.getElementById("footer-placeholder").innerHTML = data)
+        );
+
+      // Animate numbers
+      function animateValue(element, end, duration) {
+        let current = 0;
+        const increment = Math.max(1, Math.ceil(end / (duration / 16)));
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= end) {
+            current = end;
+            clearInterval(timer);
+          }
+          element.innerText = current.toLocaleString();
+        }, 16);
+
+        setTimeout(() => {
+          if (end >= 1000000)
+            element.innerText = Math.floor(end / 1000000) + "M+";
+          else if (end >= 1000)
+            element.innerText = Math.floor(end / 1000) + "K+";
+          else element.innerText = end;
+        }, duration + 100);
+      }
+
+      // Trigger animation when stats section is in view
+      let hasAnimated = false;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasAnimated) {
+              hasAnimated = true;
+              document.querySelectorAll(".stat-number").forEach((el) => {
+                const target = parseInt(el.getAttribute("data-target"));
+                animateValue(el, target, 2000);
+              });
+            }
+          });
+        },
+        {
+          threshold: 0.3, // 30% of the stats section must be visible
+        }
+      );
+
+      const statsSection = document.querySelector(".stats");
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+      //testimonials scripts
+      let index = 1;
+      const testimonials = [
+        {
+          quote:
+            "The Verified Call app gives me peace of mind. Now I know when a call is legit. It’s become a must-have for my daily communication.",
+          author: "Lucía Gómez – BARCELONA",
+        },
+        {
+          quote:
+            "Super helpful in identifying spam and scam calls. I feel much more secure picking up calls now. Great app, just wish it had dark mode.",
+          author: "Maria Samper – MADRID",
+        },
+        {
+          quote:
+            "We use Verified Call in our organization to ensure clients trust our calls. It’s increased answer rates and reduced fraud complaints. Highly recommended.",
+          author: "Pedro Santos – GRANADA",
+        },
+      ];
+
+      function renderTestimonials() {
+        const total = testimonials.length;
+        const left = (index + total - 1) % total;
+        const center = index % total;
+        const right = (index + 1) % total;
+
+        const cards = document.querySelectorAll(".testimonial-card");
+
+        [left, center, right].forEach((i, idx) => {
+          const card = cards[idx];
+          card.querySelector(".quote").textContent = testimonials[i].quote;
+          card.querySelector(".author").textContent = testimonials[i].author;
+
+          card.classList.remove("left-card", "center-card", "right-card");
+          if (idx === 0) card.classList.add("left-card");
+          if (idx === 1) card.classList.add("center-card");
+          if (idx === 2) card.classList.add("right-card");
+        });
+      }
+
+      function nextTestimonial() {
+        index = (index + 1) % testimonials.length;
+        renderTestimonials();
+      }
+
+      function prevTestimonial() {
+        index = (index - 1 + testimonials.length) % testimonials.length;
+        renderTestimonials();
+      }
+
+      document.addEventListener("DOMContentLoaded", renderTestimonials);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Marketing Agency</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f1f1f1;
+      }
+
+      .hero {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding-left: 100px;
+      }
+
+      .blue-bg {
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        background-color: #072b61;
+        clip-path: ellipse(90% 100% at 0% 50%);
+        z-index: 1;
+      }
+
+      .yellow-bg {
+        position: absolute;
+        width: 30%;
+        height: 100%;
+        background-color: #ffb600;
+        clip-path: ellipse(40% 100% at 100% 50%);
+        right: 0;
+        top: 0;
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        color: white;
+        max-width: 600px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+
+      .hero-content h1 span {
+        color: #ffb600;
+      }
+
+      .hero-content p {
+        margin-top: 30px;
+        font-size: 1.1rem;
+        color: #b8ccff;
+      }
+
+      .hero-img {
+        position: absolute;
+        right: 80px;
+        top: 40px;
+        z-index: 3;
+      }
+
+      .hero-img img {
+        width: 200px;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 50px 20px;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-img {
+          position: relative;
+          top: 0;
+          right: 0;
+          margin-top: 20px;
+          text-align: center;
+        }
+
+        .blue-bg {
+          width: 100%;
+          clip-path: ellipse(100% 70% at 0% 50%);
+        }
+
+        .yellow-bg {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="blue-bg"></div>
+      <div class="yellow-bg"></div>
+
+      <div class="hero-content">
+        <h1>Creative <span>Marketing</span><br />Agency</h1>
+        <p>
+          Lorem ipsum dolor amet usn sed eff dfa le xoswe consectetur adip isldf
+          sef tesee ing seds feagscge eius dfde amet.
+        </p>
+      </div>
+
+      <div class="hero-img">
+        <img src="businessman.png" alt="Businessman" />
+      </div>
+    </section>
+  </body>
+</html>

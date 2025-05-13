@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProveCall</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* -------------------- Base Styles -------------------- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f9f9f9;
+        color: #000;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* -------------------- Navbar & Footer -------------------- */
+      #navbar,
+      #footer {
+        width: 100%;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      /* -------------------- Hero Section -------------------- */
+      .hero {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 80px 60px;
+        background-color: #ffffff;
+      }
+
+      .hero-text {
+        flex: 1;
+        min-width: 300px;
+        max-width: 600px;
+        margin-bottom: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #007bff;
+      }
+
+      .hero-text h1 span {
+        color: #007bff;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 24px;
+      }
+
+      .cta-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .cta-group strong {
+        font-size: 18px;
+        color: #007bff;
+      }
+
+      .store-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .store-btn {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        color: #000;
+        padding: 10px 18px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .store-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .store-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+
+      .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+      }
+
+      .phone-container {
+        width: 320px;
+        position: relative;
+        animation: slideInPhone 1.5s ease-out forwards;
+        animation-delay: 0.5s;
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      .phone {
+        width: 100%;
+        border-radius: 24px;
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.25);
+      }
+
+      .notification-card {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-40px);
+        width: 90%;
+        max-width: 400px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: slideFromTop 0.8s ease-out forwards;
+        animation-delay: 2.2s;
+        z-index: 2;
+        overflow: hidden;
+      }
+
+      .notification-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      .notif-icon {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+      }
+
+      .notif-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .notif-text {
+        font-size: 14px;
+        color: #000;
+      }
+
+      .notif-text strong {
+        font-weight: 600;
+      }
+
+      .brand {
+        color: #007bff;
+        font-weight: 600;
+      }
+
+      /* -------------------- Animations -------------------- */
+      @keyframes slideInPhone {
+        to {
+          transform: translateX(0%);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideFromTop {
+        to {
+          transform: translateX(-50%) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      /* -------------------- Responsive -------------------- */
+      @media (max-width: 1024px) {
+        .hero {
+          padding: 60px 40px;
+        }
+
+        .hero-text h1 {
+          font-size: 40px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          padding: 40px 20px;
+          text-align: center;
+        }
+
+        .hero-text {
+          max-width: 100%;
+        }
+
+        .cta-group {
+          align-items: center;
+        }
+
+        .store-buttons {
+          justify-content: center;
+        }
+
+        .hero-image {
+          margin-top: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ==================== Navbar ==================== -->
+    <div id="navbar"></div>
+
+    <!-- ==================== Hero Section ==================== -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Get Notified for <span>Verified Calls</span></h1>
+        <p>
+          VerifiedCall helps your customers identify legitimate calls by
+          instantly notifying them when a call is verified and coming from a
+          registered organization.
+        </p>
+
+        <div class="cta-group">
+          <strong>
+            Discover how <span style="color: #000">VerifiedCall</span> builds
+            trust before the first ring.
+          </strong>
+          <div class="store-buttons">
+            <a class="store-btn" href="#">
+              <img src="Google Play Store Download png.jpg" alt="Google Play" />
+              Google Play
+            </a>
+            <a class="store-btn" href="#">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                alt="App Store"
+              />
+              App Store
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="phone-container">
+          <img class="phone" src="phone-emulator.png" alt="Phone Emulator" />
+          <div class="notification-card">
+            <div class="notif-icon">
+              <img src="phoneimage.png" alt="Phone Icon" />
+            </div>
+            <div class="notif-text">
+              <strong>Call from Adroitx LTD</strong>
+              Verified by <span class="brand">VerifiedCall</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== Footer ==================== -->
+    <div id="footer"></div>
+
+    <!-- ==================== Scripts ==================== -->
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

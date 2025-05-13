@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Header with External SVGs</title>
+    <style>
+      body {
+        background: radial-gradient(#c2c2c2 8%, transparent 8%), white;
+        background-position: 0 0, 25px 25px;
+        background-size: 25px 25px;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .Header {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .Header__title {
+        font-family: Avenir, Futura, "Open Sans", "Gill Sans", "Helvetica Neue",
+          Arial, sans-serif;
+        font-weight: bold;
+        font-size: 6vw;
+        margin: 0;
+        z-index: 1;
+      }
+
+      .Header__shape {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        animation-duration: 4s;
+        animation-timing-function: cubic-bezier(0.18, 1.17, 0.03, 1.46);
+        animation-fill-mode: backwards;
+        transform-origin: center;
+      }
+
+      .Header__shape img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      /* Shape positioning and animations */
+      .bigSquare {
+        top: 10%;
+        left: 15%;
+        animation-name: bigSquareAnim;
+      }
+
+      .triangle {
+        top: 75%;
+        left: 10%;
+        animation-name: triangleAnim;
+      }
+
+      .bigCircle {
+        top: 10%;
+        left: 75%; /* or use: right: 10%; if you switch to right-alignment */
+        animation-name: bigCircleAnim;
+      }
+
+      .littleCircle {
+        top: 50%;
+        left: 88%; /* moved more to the right and slightly down */
+        animation-name: littleCircleAnim;
+        color: aqua;
+      }
+
+      .hoop {
+        top: 60%;
+        left: 70%;
+        animation-name: hoopAnim;
+      }
+
+      .littleCircle {
+        top: 30%;
+        left: 85%;
+        animation-name: littleCircleAnim;
+      }
+
+      /* Keyframes for each animation */
+      @keyframes bigSquareAnim {
+        from {
+          transform: translateY(10%) rotate(-80deg) scale(0);
+        }
+        to {
+          transform: translateY(0) rotate(0deg) scale(1);
+        }
+      }
+
+      @keyframes triangleAnim {
+        from {
+          transform: rotate(-140deg) scale(0);
+        }
+        to {
+          transform: rotate(0deg) scale(1);
+        }
+      }
+
+      @keyframes bigCircleAnim {
+        from {
+          transform: scale(0) translate(60%, 3%);
+        }
+        to {
+          transform: scale(1) translate(0, 0);
+        }
+      }
+
+      @keyframes littleSquareAnim {
+        from {
+          transform: translate(226%, 183%) rotate(140deg) scale(0);
+        }
+        to {
+          transform: translate(0, 0) rotate(0deg) scale(1);
+        }
+      }
+
+      @keyframes hoopAnim {
+        from {
+          transform: translate(-160%, -33%) scale(0);
+        }
+        to {
+          transform: translate(0, 0) scale(1);
+        }
+      }
+
+      @keyframes littleCircleAnim {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      /* Optional: stagger delay */
+      .Header__shape:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .Header__shape:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .Header__shape:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .Header__shape:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      .Header__shape:nth-child(5) {
+        animation-delay: 1s;
+      }
+      .Header__shape:nth-child(6) {
+        animation-delay: 1.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Header">
+      <!-- External SVGs used as animated shapes -->
+      <div class="Header__shape bigSquare">
+        <img src="bigSquare.svg" alt="Big Square" />
+      </div>
+      <div class="Header__shape triangle">
+        <img src="triangle.svg" alt="Triangle" />
+      </div>
+      <div class="Header__shape bigCircle">
+        <img src="triangle.svg" alt="Big Circle" />
+      </div>
+      <div class="Header__shape littleSquare">
+        <img src="littleSquare.svg" alt="Little Square" />
+      </div>
+      <div class="Header__shape hoop">
+        <img src="bigSquare.svg" alt="Hoop" />
+      </div>
+      <div class="Header__shape littleCircle">
+        <img src="triangle.svg" alt="Little Circle" />
+      </div>
+
+      <!-- Central title -->
+      <h3 class="Header__title">Transform-box:fill-box</h3>
+    </div>
+  </body>
+</html>

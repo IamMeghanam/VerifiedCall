@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How It Works | ProveCall</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: white;
+        color: #11131b;
+      }
+
+      #navbar-placeholder {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      .main-content {
+        padding-top: 80px;
+      }
+
+      .how-hero {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 4rem 2rem;
+        gap: 2rem;
+      }
+
+      .how-hero-content {
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .how-hero-content h1 {
+        font-size: 2.8rem;
+        color: #11131b;
+        margin-bottom: 1rem;
+      }
+
+      .how-hero-content p {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 2rem;
+      }
+
+      .btn-primary {
+        padding: 0.8rem 1.6rem;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .how-hero-graphic {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .phone-animation {
+        max-width: 400px;
+        width: 100%;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .steps-section {
+        background-color: #f9fafb;
+        padding: 4rem 2rem;
+        color: #11131b;
+        text-align: center;
+      }
+
+      .steps-title {
+        font-size: 2.5rem;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 3rem;
+      }
+
+      .steps-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .step-card {
+        background: white;
+        color: #11131b;
+        border-radius: 1rem;
+        padding: 2rem;
+        flex: 1 1 300px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .step-icon:hover {
+        transform: scale(1.05); /* Optional zoom effect */
+        color: #fff; /* Ensures the text remains white */
+        background: linear-gradient(
+          135deg,
+          #007bff,
+          #0056b3
+        ); /* Keeps original background */
+      }
+
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 1rem;
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border-radius: 50%;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+      }
+
+      .step-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: #007bff;
+      }
+
+      .step-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        background: #f1f1f1;
+        color: #11131b;
+        border-radius: 0.8rem;
+        border-bottom: none;
+        transition: background 0.3s;
+      }
+
+      .faq-card.open .faq-question {
+        background: #e4e4e4;
+      }
+
+      .faq-toggle {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+        transition: transform 0.3s;
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 1.2rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #333;
+        background: #f9f9f9;
+        margin-top: 0.3rem;
+        border-radius: 0 0 0.8rem 0.8rem;
+      }
+
+      .faq-card.open .faq-answer {
+        display: block;
+      }
+
+      .faq-title {
+        text-align: center;
+        font-size: 2.5rem;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 3rem;
+      }
+
+      .faq-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+
+      .faq-questions {
+        box-shadow: none;
+        flex: 2;
+      }
+
+      .faq-card {
+        background: #1a1d2b;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+
+      .faq-card.open {
+        background: #23263a;
+      }
+
+      .faq-card summary {
+        cursor: pointer;
+        padding: 1.2rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        position: relative;
+        list-style: none;
+      }
+
+      .faq-card summary::marker {
+        display: none;
+      }
+
+      .faq-card p {
+        padding: 0 1.2rem 1.2rem;
+        color: #333;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .faq-sidebox {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .faq-contact {
+        background: #f1f1f1;
+        color: #11131b;
+        padding: 2rem;
+        border-radius: 1rem;
+        text-align: center;
+      }
+
+      .faq-contact h4 {
+        margin-bottom: 0.5rem;
+      }
+
+      .faq-contact button {
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .faq-service {
+        background: #fff;
+        color: #11131b;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        text-align: center;
+      }
+
+      .faq-service span {
+        display: block;
+        font-weight: bold;
+      }
+      .faq-question.active {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* lighter shadow */
+      }
+
+      .carousel-card {
+        flex: 0 0 auto;
+        width: 280px; /* Increased size */
+        background: #f1f1f1;
+        color: #11131b;
+        border-radius: 1.25rem;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        padding: 1.25rem;
+        margin: 0 1rem;
+        text-align: center;
+        scroll-snap-align: start;
+      }
+
+      .carousel-card img {
+        width: 100%;
+        max-height: 380px;
+        object-fit: contain;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .carousel-card {
+          width: 180px;
+          margin: 0 0.5rem;
+        }
+
+        .carousel-card img {
+          max-height: 250px;
+        }
+      }
+
+      .carousel-card p {
+        font-size: 1rem;
+        color: #333;
+      }
+
+      .carousel-wrapper::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .carousel-wrapper::-webkit-scrollbar-thumb {
+        background: #ff9900;
+        border-radius: 4px;
+      }
+
+      .carousel-wrapper::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .carousel-container {
+        scroll-behavior: smooth;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      .carousel-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+      }
+      .step-text {
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+      }
+
+      .step-description {
+        color: #ccc;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      .flow-carousel-section {
+        padding: 4rem 2rem;
+        background-color: #f9fafb;
+        text-align: center;
+      }
+
+      .carousel-intro {
+        color: #333;
+        margin-top: -1rem;
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .flow-carousel-section .carousel-wrapper {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 1rem;
+        gap: 1.5rem;
+      }
+
+      .flow-carousel-section .carousel-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .flow-carousel-section .carousel-card {
+        flex: 0 0 auto;
+        width: 240px;
+        background: white;
+        border-radius: 1.25rem;
+        scroll-snap-align: start;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .flow-carousel-section .carousel-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px rgba(0, 191, 255, 0.3),
+          0 4px 20px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+      }
+      .flow-carousel-section .carousel-card img {
+        width: 100%;
+        max-height: 440px;
+        object-fit: contain;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .flow-carousel-section .carousel-card p {
+        font-size: 0.95rem;
+        color: #f9fafb;
+      }
+      .flow-carousel-section .carousel-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #11131b;
+        margin-bottom: 0.5rem;
+      }
+
+      .flow-carousel-section .carousel-card p {
+        font-size: 0.95rem;
+        color: #333;
+        line-height: 1.4;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: white; /* changed from radial-gradient */
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .how-hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        background-image: url("howitworksbackground.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .how-hero-content {
+        z-index: 2;
+        max-width: 700px;
+      }
+
+      .how-hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .how-hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-primary {
+        background-color: #0f1c70;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      /* === Floating SVG Icons === */
+      .floating-icon {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        transform-origin: center;
+        transform-box: fill-box;
+        animation-duration: 4s;
+        animation-timing-function: cubic-bezier(0.18, 1.17, 0.03, 1.46);
+        animation-fill-mode: backwards;
+      }
+
+      /* Icon Positions */
+      .icon-1 {
+        top: 20%;
+        left: 20%;
+        animation-name: float1;
+        animation-delay: 0.2s;
+        filter: hue-rotate(200deg);
+      }
+      .icon-2 {
+        top: 10%;
+        right: 20%;
+        animation-name: float2;
+        animation-delay: 0.3s;
+        filter: hue-rotate(220deg);
+      }
+      .icon-3 {
+        top: 60%;
+        left: 5%;
+        animation-name: float3;
+        animation-delay: 0.4s;
+        filter: hue-rotate(240deg);
+      }
+      .icon-4 {
+        top: 30%;
+        right: 5%;
+        animation-name: float4;
+        animation-delay: 0.5s;
+        filter: hue-rotate(180deg);
+      }
+      .icon-5 {
+        bottom: 10%;
+        left: 20%;
+        animation-name: float5;
+        animation-delay: 0.6s;
+        filter: hue-rotate(160deg);
+      }
+      .icon-6 {
+        bottom: 10%;
+        right: 20%;
+        animation-name: float6;
+        animation-delay: 0.7s;
+        filter: hue-rotate(140deg);
+      }
+
+      /* Animations */
+      @keyframes float1 {
+        from {
+          transform: translateY(-40px) scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes float2 {
+        from {
+          transform: translateX(40px) scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes float3 {
+        from {
+          transform: translate(-30px, 30px) scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes float4 {
+        from {
+          transform: translate(30px, 30px) scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes float5 {
+        from {
+          transform: translate(-40px, 0px) scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes float6 {
+        from {
+          transform: translate(40px, 0px) scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="how-hero">
+        <div class="how-hero-content">
+          <h1>How ProveCall Keeps You Safe</h1>
+          <p>
+            Discover how we verify calls, detect scams, and protect your peace
+            of mind — all in real time.
+          </p>
+          <a href="#steps" class="btn-primary">See How It Works ↓</a>
+        </div>
+
+        <!-- 6 Floating Icons -->
+        <img src="triangle.svg" alt="Icon 1" class="floating-icon icon-1" />
+        <img src="triangle.svg" alt="Icon 2" class="floating-icon icon-2" />
+        <img src="bigSquare.svg" alt="Icon 3" class="floating-icon icon-3" />
+        <img src="alertimage1.svg" alt="Icon 4" class="floating-icon icon-4" />
+        <img src="triangle.svg" alt="Icon 5" class="floating-icon icon-5" />
+        <img src="alertimage1.svg" alt="Icon 6" class="floating-icon icon-6" />
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="steps" class="steps-section">
+        <h2 class="steps-title">How It Works</h2>
+        <div class="steps-wrapper">
+          <div class="step-card">
+            <div class="step-icon">1</div>
+            <h3>Verify</h3>
+            <p>
+              ProveCall checks incoming calls against enterprise registries to
+              verify the caller’s identity in real-time.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">2</div>
+            <h3>Analyze</h3>
+            <p>Analyze patterns and context to assess the call’s legitimacy.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">3</div>
+            <h3>Alert</h3>
+            <p>We instantly notify you with a visual alert.</p>
+          </div>
+        </div>
+      </section>
+      <!-- Visual Features Section (Phone Emulator Carousel) -->
+      <section class="flow-carousel-section">
+        <h2 class="steps-title">Explore ProveCall Features</h2>
+        <p class="carousel-intro">
+          A quick glance at what makes ProveCall essential for secure
+          communication.
+        </p>
+        <div class="carousel-wrapper">
+          <div class="carousel-card">
+            <img src="LoginPagee.png" alt="Login Page" />
+            <h3>Quick & Secure Login</h3>
+            <p>
+              Sign in instantly using just your mobile number — no passwords
+              needed.
+            </p>
+          </div>
+          <div class="carousel-card">
+            <img src="LandlinePagee.png" alt="Add Landline" />
+            <h3>Link Your Landline</h3>
+            <p>
+              Add and verify your organization’s landline for trusted caller ID.
+            </p>
+          </div>
+          <div class="carousel-card">
+            <img src="alertspagee.png" alt="Call Alerts" />
+            <h3>Real-Time Call Alerts</h3>
+            <p>
+              Receive notifications whenever someone verifies your landline
+              number.
+            </p>
+          </div>
+          <div class="carousel-card">
+            <img src="HistoryPagee.png" alt="Call History" />
+            <h3>Verification History</h3>
+            <p>
+              View a detailed log of past alerts and verifications for
+              transparency.
+            </p>
+          </div>
+          <div class="carousel-card">
+            <img src="LoginPagee.png" alt="Privacy Focus" />
+            <h3>Latest alerts</h3>
+            <p>
+              Built with zero data-sharing and no ads — your trust, our
+              priority.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+          <div class="faq-questions">
+            <div class="faq-card">
+              <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What services does your company provide?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                We offer caller ID verification, spam call detection, and
+                real-time call alerts.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Are there any hidden costs?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                No, we offer transparent pricing with no hidden fees.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How is the project cost determined?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Based on your needs, scope of work, and timeline. We offer
+                transparent pricing upfront.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How can I track the progress of my project?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                You’ll receive regular updates via our dashboard and email
+                notifications.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Do you provide free consultations or quotes?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Yes, we offer both to help you understand how we can help before
+                you commit.
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What types of projects do you specialize in?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                We focus on telecom security, identity verification, and
+                real-time analytics solutions.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-sidebox">
+            <div class="faq-contact">
+              <h4>You have different questions?</h4>
+              <p>
+                Our team will answer all your questions. We ensure a quick
+                response.
+              </p>
+              <button>Contact Us</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("navbar.html")
+          .then((res) => res.text())
+          .then((data) => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+          });
+
+        fetch("footer.html")
+          .then((res) => res.text())
+          .then((data) => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+          });
+      });
+
+      function toggleFAQ(el) {
+        const card = el.parentElement;
+        const isOpen = card.classList.contains("open");
+        const toggleIcon = el.querySelector(".faq-toggle");
+        if (isOpen) {
+          card.classList.remove("open");
+          toggleIcon.textContent = "+";
+        } else {
+          card.classList.add("open");
+          toggleIcon.textContent = "−";
+        }
+      }
+    </script>
+  </body>
+</html>

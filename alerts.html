@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scam Alerts - VerifiedCall</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #fff;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+      }
+
+      #navbar-placeholder {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      .main-content {
+        padding-top: 80px; /* Adjust to navbar height */
+      }
+
+      .alerts-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1rem;
+      }
+
+      .alert-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        flex-wrap: nowrap;
+      }
+
+      .alert-heading {
+        font-size: 2rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #007bff, #339dff);
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+      }
+
+      /* New animated search box styles */
+      .box {
+        position: relative;
+        display: inline-block;
+      }
+
+      .input {
+        padding: 8px;
+        width: 0px;
+        height: 40px;
+        background: none;
+        border: 2px solid #007bff;
+        border-radius: 50px;
+        box-sizing: border-box;
+        font-size: 16px;
+        color: #007bff;
+        outline: none;
+        transition: 0.5s;
+        overflow: hidden;
+        opacity: 0; /* Start fully hidden */
+      }
+
+      .box:hover .input {
+        width: 250px;
+        background: #ffffff;
+        border-radius: 10px;
+        opacity: 1; /* Fade in input */
+      }
+
+      .box i {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #007bff;
+        transition: 0.2s;
+      }
+
+      .box:hover i {
+        opacity: 0;
+        z-index: -1;
+      }
+
+      .alerts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .alert-card {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+      }
+
+      .alert-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .alert-img-wrapper {
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+        padding: 0.5rem;
+      }
+
+      .alert-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .alert-content {
+        padding: 1rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex-grow: 1;
+      }
+
+      .alert-date {
+        font-size: 0.85rem;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .alert-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        line-height: 1.2;
+      }
+
+      .alert-desc {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.3;
+        flex-grow: 1;
+        margin: 0;
+      }
+
+      .read-more {
+        color: #007bff;
+        font-weight: bold;
+        text-decoration: none;
+        align-self: flex-start;
+        margin-top: auto;
+      }
+
+      .read-more:hover {
+        text-decoration: underline;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        align-items: center;
+      }
+
+      .pagination button,
+      .pagination span {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        color: white;
+        cursor: pointer;
+      }
+
+      .pagination .active {
+        background-color: #007bff;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: #111827;
+        color: #d1d5db;
+        padding: 2rem 1rem;
+        margin-top: 4rem;
+      }
+
+      .footer-grid {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-grid h4 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .footer-grid ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-grid li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-grid a {
+        text-decoration: none;
+        color: #9ca3af;
+      }
+
+      .footer-grid a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.85rem;
+        border-top: 1px solid #374151;
+        padding-top: 1rem;
+        color: #9ca3af;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <div class="alerts-section">
+        <div class="alert-header">
+          <h1 class="alert-heading">Latest Scam Alerts</h1>
+          <div class="box">
+            <input type="text" class="input" />
+            <i class="fa fa-search"></i>
+          </div>
+        </div>
+        <div class="alerts-grid">
+          <!-- Repeat these cards as needed to enable scrolling -->
+          <!-- Replace image src with your actual path -->
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert1.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert2.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert3.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert1.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert2.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert3.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert1.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert2.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert3.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert1.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert2.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert3.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert1.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert2.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="alert-card">
+            <div class="alert-img-wrapper">
+              <img src="alert3.png" alt="Alert" class="alert-img" />
+            </div>
+            <div class="alert-content">
+              <div class="alert-date">March 25, 2025</div>
+              <div class="alert-title">Government caller ID being spoofed</div>
+              <div class="alert-desc">
+                Scammers are using fake caller IDs that look like government
+                departments.
+              </div>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <span>&lt;</span>
+          <span class="active">1</span>
+          <span>2</span>
+          <span>&gt;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Load shared components -->
+    <script>
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

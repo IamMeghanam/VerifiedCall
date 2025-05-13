@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5-Step User Journey</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f4f7fa;
+        margin: 0;
+        padding: 40px 20px;
+        overflow-x: hidden;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #2c3e50;
+      }
+
+      .steps-wrapper {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 20px;
+        padding-bottom: 30px;
+      }
+
+      .step {
+        scroll-snap-align: start;
+        background: white;
+        min-width: 300px;
+        max-width: 320px;
+        flex: 0 0 auto;
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transform: translateY(30px);
+        opacity: 0;
+        animation: slideUp 0.8s forwards;
+      }
+
+      .step img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .step h2 {
+        font-size: 1.2rem;
+        color: #34495e;
+        margin-bottom: 10px;
+      }
+
+      .step p {
+        font-size: 0.95rem;
+        color: #666;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .steps-wrapper::-webkit-scrollbar {
+        height: 10px;
+      }
+
+      .steps-wrapper::-webkit-scrollbar-thumb {
+        background-color: #007bff;
+        border-radius: 10px;
+      }
+
+      .steps-wrapper::-webkit-scrollbar-track {
+        background: #e0e0e0;
+      }
+
+      @media (max-width: 600px) {
+        .step {
+          min-width: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>5-Step User Journey</h1>
+    <div class="steps-wrapper">
+      <div class="step">
+        <img src="LoginPagee.png" alt="Login Page" />
+        <h2>Step 1: Secure Login</h2>
+        <p>
+          Users log in using their verified mobile number for secure access.
+        </p>
+      </div>
+
+      <div class="step">
+        <img src="LandlinePagee.png" alt="Landline Page" />
+        <h2>Step 2: Add Landline</h2>
+        <p>Register an organization-owned landline number for verification.</p>
+      </div>
+
+      <div class="step">
+        <img src="alertspagee.png" alt="Alerts Page" />
+        <h2>Step 3: View Call Alerts</h2>
+        <p>See verified call alerts from organizations in real time.</p>
+      </div>
+
+      <div class="step">
+        <img src="HistoryPagee.png" alt="History Page" />
+        <h2>Step 4: Call History</h2>
+        <p>Access a record of verified calls for tracking and security.</p>
+      </div>
+
+      <div class="step">
+        <img src="LoginPagee.png" alt="Ongoing Protection" />
+        <h2>Step 5: Ongoing Protection</h2>
+        <p>Continue receiving secure, verified calls through our system.</p>
+      </div>
+    </div>
+  </body>
+</html>
